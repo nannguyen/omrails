@@ -2,7 +2,9 @@
 
 <div class="jumbotron jumbotron-home">
     <div class="container">
-        <h1>Welcome back!</h1>
+        <h1>Welcome back, you're signed in!</h1>
+
+        <p>This app has a user session functionality which I borrowed from the commonly used Devise gem.</p>
     </div>
 </div>
 
@@ -10,9 +12,9 @@
 
 <div class="jumbotron jumbotron-home">
     <div class="container">
-        <h1>Welcome to my website!</h1>
-        <p>This is a template for a simple marketing or informational website. It includes a large callout called a jumbotron and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
-        <%= link_to "Learn more »", "#", class: "btn btn-primary btn-lg" %> 
+        <h1>Welcome to Nan's first Rails app...</h1>
+        <p>Hey! My name's Nan... I am creating my first Rails app with the help of One Month Rails from Udemy. This is the first app I created using Ruby on Rails.</p>
+        <%= link_to "Learn more »", about_path, class: "btn btn-primary btn-lg" %> 
 
 
     </div>
@@ -20,19 +22,19 @@
 <div class="container">
     <div class="row">
         <div class="col-md-4">
-            <h2>Heading</h2>
-            <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-            <p><%= link_to "View details", "#", class: "btn btn-secondary" %></p>
+            <h2>Purpose</h2>
+            <p>There's no real purpose to this site except to demonstrate some basic functionality I've learned from creating this basic application.</p>
+            <p><%= link_to "More", about_path, class: "btn btn-secondary" %></p>
         </div>
         <div class="col-md-4">
-            <h2>Heading</h2>
-            <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-            <p><%= link_to "View details", "#", class: "btn btn-secondary" %></p>
+            <h2>This app</h2>
+            <p>Not sure what this app is going to be all about yet but I think it's meant to be something any user can create an account on and post "tweets".</p>
+            <p><%= link_to "More", "#", class: "btn btn-secondary" %></p>
         </div>
         <div class="col-md-4">
-            <h2>Heading</h2>
-            <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-            <p><%= link_to "View details", "#", class: "btn btn-secondary" %></p>
+            <h2>The future</h2>
+            <p>In the future I'd like to utilize my skills to create helpful apps that will help solve real world problems related to environmental sustainability and/or healthcare issues or accessibility.</p>
+            <p><%= link_to "More", about_path, class: "btn btn-secondary" %></p>
         </div>
     </div>
 </div>

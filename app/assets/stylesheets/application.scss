@@ -14,6 +14,8 @@
  *= require_self
  */
  
-@import "pages";
+@import "bootstrap_customizations";
 @import "bootstrap";
+
+@import "pages";
 @import "signin_and_signup";
