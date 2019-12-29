@@ -4,7 +4,13 @@
 			<div class="card">
 				<div class="card-body">
 					<h5 class="card-title">Your profile</h5>
-					<h6 class="card-subtitle mb-2 text-muted"><%= current_user.email %></h6>
+					<h6 class="card-subtitle mb-2 text-muted">
+						<% if user_signed_in? %>
+						<%= current_user.email %>
+						<% else %>
+						<%= link_to "Please log in.", signin_path %>
+						<% end %>
+					</h6>
 					<p class="card-text">Edit your profile!</p>
 					<a href="#" class="card-link">Profile settings</a>
 					<a href="#" class="card-link">Privacy</a>
