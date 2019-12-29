@@ -1,16 +1,27 @@
 <div class="container mt-3">
-	<p>
-		<strong>User:</strong>
-		<%= @tweet.user.email %>
-	</p>
+	<div class="row">
+		<div class="offset-md-2 col-md-8 col-12">
+			<div class="card bg-light">
+				<div class="card-header"><%= @tweet.user.email %></div>
 
-	<p>
-		<strong>Content:</strong>
-		<%= @tweet.content %>
-	</p>
+				<div class="card-body">
+					<div class="card-text"><%= @tweet.content %></div>
 
-	<% if @tweet.user == current_user %>
-		<%= link_to 'Edit', edit_tweet_path(@tweet) %> | 
-	<% end %>
-	<%= link_to 'Back', tweets_path %>
+					<div class="card-text text-muted" style="font-size: small">on <%= @tweet.created_at.strftime("%A %B %d, %Y") %>
+					@ <%= @tweet.created_at.strftime("%H:%M %Z") %></div>
+
+					<div class="card-text">
+						<hr>
+						<% if @tweet.user == current_user %>
+						<%= link_to 'Edit', edit_tweet_path(@tweet), class: "card-link" %>
+						<% end %>
+
+						<%= link_to 'Back', tweets_path, class: "card-link" %>
+
+					</div>
+					
+				</div>
+			</div>
+		</div>
+	</div>
 </div>
