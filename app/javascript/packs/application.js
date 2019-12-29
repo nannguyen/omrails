@@ -3,11 +3,8 @@
 // a relevant structure within app/javascript and only use these pack files to reference
 // that code so it'll be compiled.
 
-//= require tree .
-//= require jquery
-//= require popper
-//= require bootstrap-sprockets
 //= require turbolinks
+//= require_tree .
 
 require("@rails/ujs").start()
 require("turbolinks").start()
