@@ -19,7 +19,13 @@ Rails.application.routes.draw do
 
 	get 'feed' => 'feed#show'
 
-	resources :posts
+	resources :posts do
+		member do
+			post 'vote' => 'votes#create'
+			delete 'unvote' => 'votes#destroy'
+		end
+	end
+
 	resources :tweets
 	
 

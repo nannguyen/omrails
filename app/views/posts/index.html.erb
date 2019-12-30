@@ -24,8 +24,34 @@
 
 						<% end %>
 
-						<span style="font-size: small">By <span class="text-muted card-link"><strong><%= link_to post.user.username, user_path(post.user.username) %></strong> &mdash; on <%= post.created_at.strftime("%A %B %d, %Y") %>
-							@ <%= post.created_at.strftime("%H:%M %Z") %></span>
+						<span style="font-size: small">
+							<span class="card-link">
+								<%= post.votes_for.up.size %>
+
+								<% if post.votes_for.up.size >= 0 %>
+									&uarr;
+								<% else %>
+									&darr;
+								<% end %>
+									
+							</span>
+
+							<span class="card-link">
+								by <span class="text-muted card-link"><strong><%= link_to post.user.username, user_path(post.user.username) %></strong> &mdash; on <%= post.created_at.strftime("%A %B %d, %Y") %>
+								
+								@ <%= post.created_at.strftime("%H:%M %Z") %>
+							</span>
+
+							<% if user_signed_in? %>
+								<% if current_user.voted_up_on? post %>
+									<span class="card-link"><%= link_to "↓", unvote_post_path(post), method: :delete %></span>
+								<% else %>
+									<span class="card-link"><%= link_to "↑", vote_post_path(post), method: :puts %></span>
+								<% end %>
+							<% else %>
+
+							<% end %>
+						</span>
 						
 						<% if post.user == current_user %>
 						<%= link_to 'Edit', edit_post_path(post), class: "card-link" %>

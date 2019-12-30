@@ -14,6 +14,8 @@ gem 'devise'
 gem 'bootstrap', '~> 4.4.1'
 gem 'activeadmin'
 gem 'acts_as_follower', github: 'tcocca/acts_as_follower'
+gem 'acts_as_votable'
+
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
