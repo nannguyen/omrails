@@ -29,13 +29,16 @@
 						<!-- li class="nav-item"><%= link_to "About", about_path, class: "nav-link" %></li>
 						<li class="nav-item"><%= link_to "Contact", contact_path, class: "nav-link" %></li-->
 						
-						<li class="nav-item"><%= link_to "Posts", posts_path, class: "nav-link" %></li>
-						<li class="nav-item"><%= link_to "Tweets", tweets_path, class: "nav-link" %></li>
+						<li class="nav-item"><%= link_to "Readit", posts_path, class: "nav-link" %></li>
+						<li class="nav-item"><%= link_to "Tweeter", tweets_path, class: "nav-link" %></li>
 					</ul>
 
 					<ul class="navbar-nav float-md-right">
 					<% if user_signed_in? %>
-					
+						<li class="nav-item">
+							<%= link_to "Twitfeed", feed_path, class: "nav-link" %>
+						</li>
+
 						<% if current_user.admin? %>
 							<li class="nav-item">
 								<%= link_to "Admin", admin_root_path, class: "nav-link" %>

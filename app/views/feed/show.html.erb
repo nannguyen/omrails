@@ -1,0 +1,54 @@
+<div class="container mt-3">
+	<div class="row">
+		<div class="col-12 col-md-4">
+			<div class="card">
+				<div class="card-body">
+					<% if user_signed_in? %>
+					<h5 class="card-title"><%= current_user.name %></h5>
+						<h6 class="card-subtitle mb-2 text-muted"><%= current_user.username %></h6>
+						<p class="card-text">Edit your profile!</p>
+						
+
+						<% else %>
+							<h5 class="card-title"><%= link_to "You must log in", signin_path %></h5>
+						<p class="card-text">In order to view your profile you have to log in first. <%= link_to "Log in now", signin_path %></p>
+
+					<% end %>
+
+
+					<a href="#" class="card-link">About us</a>
+					<a href="#" class="card-link">Privacy</a>
+				</div>
+			</div>
+		</div>
+		<div class="col-12 col-md-8">
+			<h1>People you follow</h1>
+			<div class="card">
+				<ul class="list-group">
+					<% if user_signed_in? %>
+
+						<% @tweets.where(user:current_user.all_following).each do |tweet| %>
+
+							<li class="list-group-item">
+								<p><strong><%= link_to tweet.user.username, user_path(tweet.user.username) %></strong></p>
+								<p><%= tweet.content %></p>
+								<span style="font-size: small" class="text-muted">
+									<%= link_to "View", tweet_path(tweet), class: "card-link" %>
+									<%= link_to "Unfollow", unfollow_user_path(tweet.user.username), method: :delete, class: "card-link" %>
+								</span>
+							</li>
+
+						<% end %>
+					<% else %>
+
+						<li class="list-group-item">
+							Please <%= link_to "log in", signin_path %> to continue.
+						</li>
+
+					<% end %>
+
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>

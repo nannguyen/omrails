@@ -6,14 +6,33 @@
 			<p class="text-muted"><%= @user.username %></p>
 			<p><%= @user.email %></p>
 
-			<h2>All me tweets</h2>
-			<% @tweets.each do |tweet| %>
+			<h2 class="mt-5">All me tweets</h2>
+			<% @user.tweets.each do |tweet| %>
 				<div class="card mb-1">
 					<div class="card-header"><%= link_to tweet.created_at.strftime("%A %B %d, %Y") + " at " + tweet.created_at.strftime("%H:%M %Z"), tweet_path(tweet) %></div>
 					<div class="card-body">
 						<div class="card-text"><%= tweet.content %></div>
 					</div>
 				</div>
+			<% end %>
+
+			<h2 class="mt-5">All me following</h2>
+			<div class="card">
+				<ul class="list-group">
+					<% @user.all_following.each do |following| %>
+					<li class="list-group-item">
+						<%= link_to following.username, user_path(following.username) %>
+					</li>
+					<% end %>
+				</ul>
+			</div>
+			
+			<% if user_signed_in? %>
+				<% if current_user.following?(@user) %>
+					<%= link_to "Unfollow :(", unfollow_user_path(@user.username), method: :delete %>
+				<% else %>
+					<%= link_to "Follow me here!", follow_user_path(@user.username), method: :post %>
+				<% end %>
 			<% end %>
 		</div>
 	</div>
