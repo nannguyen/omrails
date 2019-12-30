@@ -40,7 +40,12 @@
 
 						<% end %>
 						</p>
+						<% if tweet.image.present? %>
+						<span style="text-align: center"><img src="<%= tweet.image %>" class="img-fluid" alt=""></span>
+						<% end %>
+
 						<p><%= tweet.content %></p>
+						
 						<span style="font-size: small" class="text-muted">
 							<%= link_to 'View', tweet, class: "card-link" %>
 

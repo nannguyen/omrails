@@ -15,6 +15,7 @@ gem 'bootstrap', '~> 4.4.1'
 gem 'activeadmin'
 gem 'acts_as_follower', github: 'tcocca/acts_as_follower'
 gem 'acts_as_votable'
+gem "paperclip", git: "git://github.com/thoughtbot/paperclip.git"
 
 
 # Use Active Storage variant

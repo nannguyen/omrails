@@ -28,10 +28,20 @@
 							<span class="card-link">
 								<%= post.votes_for.up.size %>
 
-								<% if post.votes_for.up.size >= 0 %>
-									&uarr;
+								<% if user_signed_in? %>
+									<% if current_user.voted_up_on? post %>
+										&uarr;
+										<%= link_to "↓", unvote_post_path(post), method: :delete %>
+									<% else %>
+										<%= link_to "↑", vote_post_path(post), method: :puts %>
+										&darr;
+									<% end %>
 								<% else %>
-									&darr;
+									<% if post.votes_for.up.size >= 0 %>
+										&uarr;
+									<% else %>
+										&darr;
+									<% end %>
 								<% end %>
 									
 							</span>
@@ -41,16 +51,6 @@
 								
 								@ <%= post.created_at.strftime("%H:%M %Z") %>
 							</span>
-
-							<% if user_signed_in? %>
-								<% if current_user.voted_up_on? post %>
-									<span class="card-link"><%= link_to "↓", unvote_post_path(post), method: :delete %></span>
-								<% else %>
-									<span class="card-link"><%= link_to "↑", vote_post_path(post), method: :puts %></span>
-								<% end %>
-							<% else %>
-
-							<% end %>
 						</span>
 						
 						<% if post.user == current_user %>
