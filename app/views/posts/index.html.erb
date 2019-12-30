@@ -17,7 +17,7 @@
 						<h6><%= link_to post.title, post %></h6>
 
 						<% if post.url %>
-						<p><%= link_to post.url.truncate(140, separator: ' ', omission: '...'), post.url %></p>
+						<p><%= link_to post.url.truncate(140, separator: ' ', omission: '...'), post.url, target: "_blank" %></p>
 
 						<% elsif post.content %>
 						<p><%= post.content.truncate(140, separator: ' ', omission: '...') %></p>

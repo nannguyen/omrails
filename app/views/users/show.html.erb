@@ -9,7 +9,7 @@
 			<h2>All me tweets</h2>
 			<% @tweets.each do |tweet| %>
 				<div class="card mb-1">
-					<div class="card-header"><%= link_to tweet.created_at, tweet_path(tweet) %></div>
+					<div class="card-header"><%= link_to tweet.created_at.strftime("%A %B %d, %Y") + " at " + tweet.created_at.strftime("%H:%M %Z"), tweet_path(tweet) %></div>
 					<div class="card-body">
 						<div class="card-text"><%= tweet.content %></div>
 					</div>
