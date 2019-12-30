@@ -3,16 +3,19 @@
 		<div class="col-md-4 mb-1">
 			<div class="card">
 				<div class="card-body">
-					<h5 class="card-title">Your profile</h5>
-					<h6 class="card-subtitle mb-2 text-muted">
-						<% if user_signed_in? %>
-						<%= current_user.email %>
+					<% if user_signed_in? %>
+					<h5 class="card-title"><%= current_user.name %></h5>
+						<h6 class="card-subtitle mb-2 text-muted"><%= current_user.username %></h6>
+						<p class="card-text">Edit your profile!</p>
+
 						<% else %>
-						<%= link_to "Please log in.", signin_path %>
-						<% end %>
-					</h6>
-					<p class="card-text">Edit your profile!</p>
-					<a href="#" class="card-link">Profile settings</a>
+							<h5 class="card-title"><%= link_to "Log in now", signin_path %></h5>
+						<p class="card-text">In order to view your profile you have to log in first.</p>
+
+					<% end %>
+
+
+					<a href="#" class="card-link">About us</a>
 					<a href="#" class="card-link">Privacy</a>
 				</div>
 			</div>
@@ -25,7 +28,7 @@
 				<ul class="list-group list-group-flush">
 					<% @tweets.each do |tweet| %>
 					<li class="list-group-item">
-						<p><strong><%= link_to tweet.user.email, tweet %></strong></p>
+						<p><strong><%= link_to tweet.user.username, tweet %></strong></p>
 						<p><%= tweet.content %></p>
 						<% if tweet.user == current_user %>
 						<div>
