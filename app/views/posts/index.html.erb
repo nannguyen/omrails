@@ -1,32 +1,41 @@
 
 <div class="container">
 	<div class="row">
-		<div class="col-12">
-			<h1>Posts</h1>
-		</div>
-	</div>
-	
-	<% @posts.each do |post| %>
-	<div class="row feed mt-3 mb-3 pt-3">
-		<div class="col-12">
-			<h3 class="feed-title"><%= link_to post.title, post %></h3>
-
-			<p><%= post.content.truncate(140, separator: ' ', omission: '...') %></p>
-
-			<p>By <strong><%= post.user.email %></strong> &mdash; on <%= post.created_at.strftime("%A %B %d, %Y") %>
-				@ <%= post.created_at.strftime("%H:%M %Z") %>
+		<div class="col-12 mt-3">
+			<h1>Pinkified reddit <%= link_to 'New Post', new_post_path, class: "btn btn-primary" %></h1>
 			
-			<% if post.user == current_user %>
-			- <%= link_to 'Edit', edit_post_path(post) %>
-		  	- <%= link_to 'Delete', post, method: :delete, data: { confirm: 'Are you sure?' } %></p>
-		  	<% end %>
 		</div>
 	</div>
-	<% end %>
 
 	<div class="row">
+
 		<div class="col-12">
-			<%= link_to 'New Post', new_post_path, class: "btn btn-primary" %>
+			<div class="card">
+				<ul class="list-group">
+					<% @posts.each do |post| %>
+					<li class="list-group-item">
+						<h6><%= link_to post.title, post %></h6>
+
+						<% if post.url %>
+						<p><%= link_to post.url.truncate(140, separator: ' ', omission: '...'), post.url %></p>
+
+						<% elsif post.content %>
+						<p><%= post.content.truncate(140, separator: ' ', omission: '...') %></p>
+
+						<% end %>
+
+						<span style="font-size: small">By <span class="text-muted card-link"><strong><%= post.user.email %></strong> &mdash; on <%= post.created_at.strftime("%A %B %d, %Y") %>
+							@ <%= post.created_at.strftime("%H:%M %Z") %></span>
+						
+						<% if post.user == current_user %>
+						<%= link_to 'Edit', edit_post_path(post), class: "card-link" %>
+					  	<%= link_to 'Delete', post, method: :delete, data: { confirm: 'Are you sure?' }, class: "card-link" %>
+					  	<% end %></span>
+					</li>
+
+					<% end %>
+				</ul>
+			</div>
 		</div>
 	</div>
 

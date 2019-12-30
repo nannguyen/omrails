@@ -4,8 +4,13 @@
 			<h1><%= @post.title %></h1>
 
 			<p class="post-meta">By <strong><%= @post.user.email %></strong> on <%= @post.created_at %></p>
-
+			
+			<% if @post.url %>
+			<p class="post-content"><%= @post.url %></p>
+			<% end %>
+			<% if @post.content %>
 			<p class="post-content"><%= @post.content %></p>
+			<% end %>
 		</div>
 
 		<div class="col-12">
