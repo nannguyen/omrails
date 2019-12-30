@@ -9,8 +9,8 @@
 						<p class="card-text">Edit your profile!</p>
 						<%= link_to 'New Tweet', new_tweet_path, class: "btn btn-primary mb-1 card-link" %>
 
-						<% else %>
-							<h5 class="card-title"><%= link_to "You must log in", signin_path %></h5>
+					<% else %>
+						<h5 class="card-title"><%= link_to "You must log in", signin_path %></h5>
 						<p class="card-text">In order to view your profile you have to log in first. <%= link_to "Log in now", signin_path %></p>
 
 					<% end %>
@@ -30,16 +30,14 @@
 					<li class="list-group-item">
 						<p><strong><%= link_to tweet.user.username, user_path(tweet.user.username) %></strong>
 						
-						<% if user_signed_in? %>
-							<% if tweet.user != current_user %>
+						<% if user_signed_in? && tweet.user != current_user %>
 
-								<% if current_user.following?(tweet.user) %>
-									- <%= link_to "unfollow", unfollow_user_path(tweet.user.username), method: :delete %>
-								<% else %>
-									- <%= link_to "follow", follow_user_path(tweet.user.username), method: :create %>
-								<% end %>
-
+							<% if current_user.following?(tweet.user) %>
+								- <%= link_to "unfollow", unfollow_user_path(tweet.user.username), method: :delete %>
+							<% else %>
+								- <%= link_to "follow", follow_user_path(tweet.user.username), method: :create %>
 							<% end %>
+
 						<% end %>
 						</p>
 						<p><%= tweet.content %></p>
