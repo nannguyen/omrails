@@ -28,8 +28,8 @@
 				<ul class="list-group list-group-flush">
 					<% @tweets.each do |tweet| %>
 					<li class="list-group-item">
-						<p><strong><%= link_to tweet.user.username, tweet %></strong></p>
-						<p><%= tweet.content %></p>
+						<p><strong><%= link_to tweet.user.username, user_path(tweet.user.username) %></strong></p>
+						<p><%= link_to tweet.content, tweet %></p>
 						<% if tweet.user == current_user %>
 						<div>
 						<%= link_to 'Edit', edit_tweet_path(tweet), class: "card-link" %>

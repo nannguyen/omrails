@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'users/:username' => 'users#show', as: 'user'
   resources :posts
   resources :tweets
   ActiveAdmin.routes(self)

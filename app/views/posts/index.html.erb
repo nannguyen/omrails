@@ -24,7 +24,7 @@
 
 						<% end %>
 
-						<span style="font-size: small">By <span class="text-muted card-link"><strong><%= post.user.username %></strong> &mdash; on <%= post.created_at.strftime("%A %B %d, %Y") %>
+						<span style="font-size: small">By <span class="text-muted card-link"><strong><%= link_to post.user.username, user_path(post.user.username) %></strong> &mdash; on <%= post.created_at.strftime("%A %B %d, %Y") %>
 							@ <%= post.created_at.strftime("%H:%M %Z") %></span>
 						
 						<% if post.user == current_user %>
