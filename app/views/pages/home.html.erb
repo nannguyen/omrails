@@ -1,6 +1,6 @@
 <% if user_signed_in? %>
 
-<div class="jumbotron jumbotron-home">
+<div class="jumbotron bg-gradient-warning jumbotron-fluid">
     <div class="container">
         <h1>Welcome back <%= current_user.name %>, you're signed in!</h1>
 
@@ -25,18 +25,18 @@
 <div class="container">
     <div class="row">
         <div class="col-md-4">
-            <h2>These apps</h2>
-            <p>I've made this web app to allow visitors to create an account and interact Twitter-style where users can post and follow one another. Users can also post Reddit- or Hackernews-style by adding votable posts with content or links.</p>
+            <h2>Tweeter</h2>
+            <p>This app includes a Tweet resource which allows the User to create and modify their own tweets.</p>
             <p><%= link_to "Tweeter", tweets_path, class: "btn btn-primary" %></p>
         </div>
         <div class="col-md-4">
-            <h2>Try it out</h2>
-            <p>Please try my app by creating an account (everything is securely encrypted!) and posting on Tweeter or Readit, following some users or up/downvoting some posts. Thanks!</p>
+            <h2>Users</h2>
+            <p>I use Devise and ActiveAdmin to create and manage Users. These Users have their own Tweets and Posts! They also act as followers, so can follow and unfollow each other.</p>
             <p><%= link_to "Create account", signup_path, class: "btn btn-primary" %></p>
         </div>
         <div class="col-md-4">
-            <h2>About Nan</h2>
-            <p>In the future I'd like to utilize my skills to create helpful apps that will help solve real world problems related to environmental sustainability and/or healthcare issues or accessibility.</p>
+            <h2>Posts</h2>
+            <p>I also created a Post resource which Users can create. These Posts also act as Votable, and thus are able to be upvoted and downvoted upon by users.</p>
             <p><%= link_to "Contact", contact_path, class: "btn btn-primary" %></p>
         </div>
     </div>
